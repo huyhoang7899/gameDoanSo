@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BinarySearch</title>
+</head>
+<body>
+<script>
+    function binarySearch(arr, left, right, value, guess) {
+        if (left > right) {
+            return -1;
+        } else {
+            let mid = (left + right) / 2;
+            mid = parseInt(mid);
+            if (guess === value) {
+                alert("Chính xác");
+                return 1;
+            }
+            if (guess > value) {
+                alert("Too high");
+                let guess = parseInt(prompt("Nhập số bạn muốn đoán : "));
+                return binarySearch(arr, mid + 1, right, value, guess);
+            } else if (guess < value) {
+                alert("Too low");
+                let guess = parseInt(prompt("Nhập số bạn muốn đoán : "));
+                return binarySearch(arr, mid + 1, right, value, guess);
+            }
+        }
+    }
+
+    let arr = [];
+    let guessnumber = parseInt(prompt("Nhập số bạn muốn đoán : "));
+    for (let i = 0; i < 100; ++i) {
+        arr[i] = Math.floor(Math.random() * 101);
+    }
+    binarySearch(arr, 0, arr.length , 82, guessnumber);
+
+
+</script>
+</body>
+</html>
